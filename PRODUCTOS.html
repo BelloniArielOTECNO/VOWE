@@ -30,7 +30,15 @@
             <h3>Alta Baja y Modificacion de Mis Productos Publicados</h3>
 
             <div>Grilla con ng-repeat</div>
-
+            <select style="color:black;
+                                           background-color: darkgrey;
+                                           padding: 5px;
+                                           border-radius: 5px 5px 5px 5px;
+                                           border: 5px double #000000;"
+                    ng-model="data"
+                    ng-show="DATA"
+                    ng-options="x.DES +' - '+ x.PRECIO for x in DATA">
+            </select>
 
 
         </div>
