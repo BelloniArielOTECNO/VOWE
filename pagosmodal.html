@@ -1,0 +1,27 @@
+<script type="text/ng-template" id="modalDialogId">
+    <div class="ngdialog-message">
+        <h2>Formulario de informe de pagos</h2>
+        <h3>generado con exito!</h3>
+        <h2>Recibo nro:<code>{{DATA.data[0]}}</code></h2>
+        <h4>Empresa: <code>{{DATA.data[0]}}</code><code>{{DATA.data[1]}}</code></h4>
+        <h4>Contacto: <code>{{DATA.data[2]}}</code></h4>
+        <h4>Telefono: <code>{{DATA.data[3]}}</code></h4>
+        <h4>Fecha de pago: <code>{{DATA.data[4]}}</code></h4>
+        <h4>Monto: <code>{{DATA.data[5]}}</code></h4>
+        <h4>Forma de Pago: <code>{{DATA.data[6]}}</code></h4>
+        <h4>Cuenta utilizada: <code>{{DATA.data[7]}}</code></h4>
+        <P>Si desea que se envie a su email {{confirmValue}} los datos del formulario por favor ingreselo.</br></P>
+        <input ng-model="confirmValue"/>
+        <button type="button" class="btn btn-default" ng-click="confirm(confirmValue)">Enviar Mail</button>
+
+        <P>De lo contrario presione Salir. Muchas Gracias</P>
+
+        <div class="ngdialog-buttons">
+            <button type="button"
+                    class="ngdialog-button ngdialog-button-primary"
+                    ng-click="confirm()">
+                Salir
+            </button>
+        </div>
+    </div>
+</script>

@@ -1,0 +1,52 @@
+.rag-red { /* Celda inhabilitada en uso */
+    color: grey ;
+    //color: #DEBDBD;
+    background-color: #DEBDBD;
+
+}
+
+.rag-green { /* Celda libre */
+    color: darkgreen;
+    //color: lightgreen;
+    background-color: lightgreen;
+}
+.rag-grey { /* Celda de fin de semana */
+    color: grey;
+    //color: lightgrey;
+    background-color: lightgrey;
+}
+
+.red { /* Celda feriado */
+    color:grey;
+    //color: lightcoral;
+    background-color: lightcoral;
+}
+.azul { /* Celda seleccionada */
+    color:grey;
+    //color: lightseagreen;
+    background-color: lightseagreen;
+}
+/* hasta aqui colores para la grilla */
+
+
+
+
+.frm-w {
+    background-color: #ffe8a1;
+    padding: 20px;
+}
+.frm-d {
+    background-color: lightseagreen;
+    padding: 20px;
+}
+.frm-ok {
+    background-color: darkgreen;
+    padding: 20px;
+
+}
+
+.thumb {
+    height: 300px;
+    border: 1px solid #000;
+    margin: 10px 5px 0 0;
+}

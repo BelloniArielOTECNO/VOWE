@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="appREQ">
+<head>
+
+
+    <link  rel = "stylesheet"  href = "css/form.css">
+
+    <link  rel = "stylesheet"  href = "css/ngDialog.min.css">
+    <link  rel = "stylesheet"  href = "css/ngDialog-theme-default.min.css">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS de Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+
+    <title>REQUERIMIENTOS de Sistema</title>
+    <script src="js/angular.min.js"></script>
+
+</head>
+
+<body>
+
+<div class="jumbotron" ng-controller="Formulario">
+
+
+    <div class="ng-cloak">
+        <h2>BIENVENIDO! <br>FORMULARIO REQUERIMIENTOS</h2>
+        <div class="container-fluid">
+            <h3>Instrucciones para realizar un requerimiento de sistema:</h3>
+
+            <ol>
+                <div ng-class="'frm-w'">
+                    <form id="FRM" name="FRM">
+                        <div>
+                            <h5>Para pedir un requerimiento de sistema por favor siga los pasos que detallamos:
+                                <br><br>1>Verifique que la opcion o funcionalidad que ud rquiere no esté ya en existencia en el SAF,
+                                el sistema cuenta con muchas funcionalidades que no utilizan todos lo usuarios.
+                                Desde OTECNO cada nuevo requerimiento generado impacta en el SAF que manejan todos los usuarios
+                                por lo que Ud. se beneficia por los desarrollos de otros clientes.
+                                <br><br>2>Puede verificar si la funcionalidad que requiere esta disponible contactandose con el departamento
+                                técnico.
+                                <br><br>3>Una vez verificado que realmente la funcion no esta disponible pasaremos a la explicacion del requerimiento.
+                                en este punto le pedimos escriba un mail a soporte@otecno.com con el detalle de lo que necesita que el SAF realice.
+                                <br><br>4>Tenga en cuenta que en el detalle del requerimiento debe incluir si el sistema va a requerir algun nuevo dato
+                                para lograr ejecutar el requerimiento o no.
+                                <br><br>5>Coloque la mayor cantidad de detalles del requerimiento y que resultado necesita que muestre como resultado final.</h5>
+                        </div>
+
+
+                        <br>
+                        <button ng-click="GUA()" >OK</button>
+                    </form>
+
+                </div>
+
+            </ol>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+<!--script src="js/jquery-3.2.1.min.js"></script
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="js/jquery.datetimepicker.full.js"></script>-->
+
+<script type="text/javascript" src="js/angular.min.js"></script>
+
+<script src = "js/ngDialog.min.js"> </script>
+
+<script src="https://unpkg.com/ag-grid/dist/ag-grid.js"></script>
+
+
+<script src="js/jquery-3.2.1.min.js" type="application/javascript"></script>
+
+
+<!--script  src = "js/jquery-validation/js/jquery.validate.js"> </script>
+
+<script  src = "js/jquery-validation/js/additional-methods.js"> </script>
+<script  src = "js/jquery-validation/js/localization/messages_ar.js"> </script-->
+
+<script type="text/javascript" src="constantes.js"></script>
+<script type="text/javascript" src="REQapp.js"></script>
+
+<script src="grilla.js"></script>
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="iapp">
+<head>
+
+
+    <link  rel = "stylesheet"  href = "css/form.css">
+
+    <link  rel = "stylesheet"  href = "css/ngDialog.min.css">
+    <link  rel = "stylesheet"  href = "css/ngDialog-theme-default.min.css">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS de Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+
+    <title>VOWE - Ventas Online Web Email</title>
+    <script src="js/angular.min.js"></script>
+
+
+
+</head>
+
+<body>
+
+<div class="jumbotron" ng-controller="Index">
+
+
+    <div class="ng-cloak">
+        <h2>BIENVENIDO! <br> Index de VOWE</h2>
+        <div class="container-fluid">
+            <h3>Seleccione la opción:</h3>
+
+            <ol>
+                <div ng-class="'frm-d'">
+                    <div ng-click="PRODUCTOSopen()"
+                         ng-class="'alert alert-info'"
+                         style="cursor: pointer" >TODOS LOS PRODUCTOS
+                    </div>
+                    <div ng-click="VENDEDORESopen()"
+                         ng-class="'alert alert-info'"
+                         style="cursor: pointer" >LISTADO DE VENDEDORES
+                    </div>
+                    <div ng-click="NEWCTAopen()"
+                         ng-class="'alert alert-info'"
+                         style="cursor: pointer" >ABRIR UNA CUENTA
+                    </div>
+                    <div ng-click="LOGUINopen()"
+                         ng-class="'alert alert-info'"
+                         style="cursor: pointer" >LOGUIN
+                    </div>
+                </div>
+
+            </ol>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+<!--script src="js/jquery-3.2.1.min.js"></script
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="js/jquery.datetimepicker.full.js"></script>-->
+
+<script type="text/javascript" src="js/angular.min.js"></script>
+
+
+
+
+<script src="js/jquery-3.2.1.min.js" type="application/javascript"></script>
+
+
+
+<script type="text/javascript" src="iapp.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

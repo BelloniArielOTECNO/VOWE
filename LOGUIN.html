@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="appPag">
+<head>
+
+
+    <link  rel = "stylesheet"  href = "css/form.css">
+
+    <link  rel = "stylesheet"  href = "css/ngDialog.min.css">
+    <link  rel = "stylesheet"  href = "css/ngDialog-theme-default.min.css">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS de Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+
+    <title>loguin</title>
+    <script src="js/angular.min.js"></script>
+
+</head>
+
+<body>
+
+<div class="jumbotron" ng-controller="Formulario">
+
+
+    <div class="ng-cloak">
+        <h2>BIENVENIDO! <br>loguin</h2>
+        <div class="container-fluid">
+            <h3>Logueate para hacer pedidos o vender y manejar tu cuenta!</h3>
+            <ol>
+                <div id="PPAL" ng-class="FRM.EMP.$valid && FRM.FFP.$valid && FRM.IMP.$valid && FRM.MP.$valid && FRM.CTA.$valid ? 'frm-ok' : 'frm-w'">
+                    <form id="FRM" name="FRM">
+                        Mail
+                        <input ng-model="ACC.MAIL" required>
+                        {{MAIL}}
+                        <br>
+                        <br>
+                        Contraseña
+                        <input ng-model="ACC.PASS" required>
+                        {{PASS}}
+                        <br>
+                        <button ng-click="GUA()" >Loguin</button>
+                    </form>
+
+                </div>
+
+            </ol>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+<!--script src="js/jquery-3.2.1.min.js"></script
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="js/jquery.datetimepicker.full.js"></script>-->
+
+<script type="text/javascript" src="js/angular.min.js"></script>
+
+<script src = "js/ngDialog.min.js"> </script>
+
+<script src="https://unpkg.com/ag-grid/dist/ag-grid.js"></script>
+
+
+<script src="js/jquery-3.2.1.min.js" type="application/javascript"></script>
+
+
+<script src="js/moment-with-locales.min.js" type="application/javascript"></script>
+
+
+
+<!--script  src = "js/jquery-validation/js/jquery.validate.js"> </script>
+
+<script  src = "js/jquery-validation/js/additional-methods.js"> </script>
+<script  src = "js/jquery-validation/js/localization/messages_ar.js"> </script-->
+
+<script type="text/javascript" src="constantes.js"></script>
+<script type="text/javascript" src="LOGUIN.js"></script>
+
+<script src="grilla.js"></script>
+
+
+
+
+
+
+
+</body>
+</html>
