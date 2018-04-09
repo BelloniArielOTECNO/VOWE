@@ -10,12 +10,10 @@
 <input type="text" ng-model="ADD.PRECIO"><br>
 
 <strong>Imagen:</strong>
-<input type="file" ng-model="ADD.ARCH"><br>
-{{ADD.DES}}
 
+<input type="file" id="FI" files-input ng-model="ADD.ARCH" multiple>
 
 <div class="ngdialog-buttons">
-    <button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="confirm()">OK
+    <button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="confirm(ADD)">OK
         </button>
 </div>
-<script type="text/javascript" src="add.js"></script>

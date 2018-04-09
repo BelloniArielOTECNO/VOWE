@@ -1,8 +1,30 @@
 var app = angular.module("app", ['ngDialog']);
 
+//esta directiva captura un archivos en B64
+angular.module("app").directive("filesInput",
+    function() {
+        return { require: "ngModel", link:
+            function postLink(scope,elem,attrs,ngModel) {
+                elem.on("change",
+                    function(e) {
+                        file1=elem[0].files[0];
+                        var reader = new FileReader();
+                        reader.readAsDataURL(file1);
+                        reader.onload = function () {
+                            ngModel.$setViewValue(reader.result);
+                        };
+                    }
+                )
+            }
+        }
+    }
+);
+
+
 
 app.controller ('Formulario' , function ($scope,$http,ngDialog){
     var bl=0;
+
     $scope.logID = localStorage.getItem("logID"); //recupera ID del user logueado
 
 
@@ -40,7 +62,7 @@ app.controller ('Formulario' , function ($scope,$http,ngDialog){
             closeByEscape: false
         }).then(
             function (DATA) {
-                console.log("OK el ng dialog");
+                console.log("OK el ng dialog",DATA);
                 console.log(DATA);
             },
             function (DATA) {
