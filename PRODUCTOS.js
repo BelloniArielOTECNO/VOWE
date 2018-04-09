@@ -24,6 +24,7 @@ app.controller ('Formulario' , function ($scope,$http,ngDialog){
         for (var i=0;i < $scope.DATA.length;i++){
             //console.log($scope.DATA[i].B64.replace(/~/g, "\+"));
             $scope.DATA[i].B64=$scope.DATA[i].B64.replace(/~/g, "\+");
+            $scope.DATA[i].Hipervinculo="www.google.com"; // insertar el hipervinculo para cada renglon
         }
      },
      function(DATA){
@@ -31,7 +32,37 @@ app.controller ('Formulario' , function ($scope,$http,ngDialog){
         console.log(DATA.data);
      });
 
+    $scope.ADD = function(){
 
+        ngDialog.openConfirm({
+            template:
+            '<h4>Carga de nuevo Articulo</h4>' +
+
+            '<strong>Nombre o Codigo:</strong>' +
+            '<input type="text"><br>' +
+
+            '<strong>Descripcion:</strong>' +
+            '<input type="text"><br>' +
+
+            '<strong>Precio:</strong>' +
+            '<input type="text"><br>' +
+
+            '<strong>Imagen:</strong>' +
+            '<input type="file"><br>' +
+
+
+
+            '<div class="ngdialog-buttons">' +
+            '<button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="confirm()">OK' +
+            '</button>' +
+            '</div>',
+            plain: true
+        });
+
+
+
+
+    };
 
 
     //esta funcion guarda el formulario
