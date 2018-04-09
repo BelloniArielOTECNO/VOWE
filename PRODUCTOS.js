@@ -35,32 +35,18 @@ app.controller ('Formulario' , function ($scope,$http,ngDialog){
     $scope.ADD = function(){
 
         ngDialog.openConfirm({
-            template:
-            '<h4>Carga de nuevo Articulo</h4>' +
-
-            '<strong>Nombre o Codigo:</strong>' +
-            '<input type="text"><br>' +
-
-            '<strong>Descripcion:</strong>' +
-            '<input type="text"><br>' +
-
-            '<strong>Precio:</strong>' +
-            '<input type="text"><br>' +
-
-            '<strong>Imagen:</strong>' +
-            '<input type="file"><br>' +
-
-
-
-            '<div class="ngdialog-buttons">' +
-            '<button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="confirm()">OK' +
-            '</button>' +
-            '</div>',
-            plain: true
-        });
-
-
-
+            template:'add.html',
+            closeByDocument: false,
+            closeByEscape: false
+        }).then(
+            function (DATA) {
+                console.log("OK el ng dialog");
+                console.log(DATA);
+            },
+            function (DATA) {
+                //ERRROR!!!
+                console.log("abort o error el ngdialog");
+            });
 
     };
 
