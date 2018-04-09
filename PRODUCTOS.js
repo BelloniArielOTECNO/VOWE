@@ -20,7 +20,11 @@ app.controller ('Formulario' , function ($scope,$http,ngDialog){
         //console.log("LLEGO LA INFO BIEN!, PUEDE ESTAR VACIA PERO PHP NO TIRO ERROR");
         //console.log(DATA.data);
         $scope.DATA = DATA.data;
-        console.log(DATA.data);
+
+        for (var i=0;i < $scope.DATA.length;i++){
+            //console.log($scope.DATA[i].B64.replace(/~/g, "\+"));
+            $scope.DATA[i].B64=$scope.DATA[i].B64.replace(/~/g, "\+");
+        }
      },
      function(DATA){
         //ERRROR!!!
