@@ -17,7 +17,6 @@
     <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
 
     <title>Productos</title>
-    <script src="js/angular.min.js"></script>
 
 </head>
 
@@ -42,9 +41,14 @@
 
                 <tr ng-model="data" ng-repeat="x in DATA">
 
-                    <td><a href="{{x.Hipervinculo}}">
+                    <td><a href={{x.Hip}}>
                             <img src='{{x.B64}}' alt='image' width="80" height="80" border='0'>
                         </a>
+                        <br/>
+                    </td>
+                    <td>
+                        <img src='{{x.B64}}' ng-click="DETALLE(x.Hip)" alt='image' width="80" height="80" border='0' style="cursor:pointer">
+
                         <br/>
                     </td>
 

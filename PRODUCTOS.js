@@ -52,7 +52,7 @@ $scope.ARTS = function () {
         for (var i=0;i < $scope.DATA.length;i++){
             //console.log($scope.DATA[i].B64.replace(/~/g, "\+"));
             $scope.DATA[i].B64=$scope.DATA[i].B64.replace(/~/g, "\+");
-            $scope.DATA[i].Hipervinculo="www.google.com"; // insertar el hipervinculo para cada renglon
+            $scope.DATA[i].Hip=i; // insertar el hipervinculo para cada renglon
         }
      },
      function(DATA){
@@ -61,6 +61,11 @@ $scope.ARTS = function () {
      });
 }
 $scope.ARTS();
+
+$scope.DETALLE =function () {
+    alert("entre al detalle");
+};
+
 
 //LOGOUT FUNCION
 $scope.LOGOUT = function () {
