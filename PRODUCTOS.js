@@ -11,7 +11,7 @@ angular.module("app").directive("filesInput",
                         var reader = new FileReader();
                         reader.readAsDataURL(file1);
                         reader.onload = function () {
-                            ngModel.$setViewValue(reader.result);
+                            ngModel.$setViewValue(reader.result.replace(/\+/g, "~"));
                         };
                     }
                 )
@@ -26,13 +26,17 @@ app.controller ('Formulario' , function ($scope,$http,ngDialog){
     var bl=0;
 
     $scope.logID = localStorage.getItem("logID"); //recupera ID del user logueado
+    console.log($scope.logID);
+
+//funcon de listado de productos segun user
+$scope.ARTS = function () {
 
 
     // AJAX CON ANGULAR  DE ALEX buscar productos.
 
     $scope.ACC ={ACC:"3"};
-    $scope.ACC.ID= localStorage.getItem("logID");
-
+    $scope.ACC.IDVEND = localStorage.getItem("logID");
+    console.log($scope.ACC);
     dd='datos='+JSON.stringify($scope.ACC);
     //console.log($scope.ACC);
     //console.log(dd);
@@ -42,6 +46,8 @@ app.controller ('Formulario' , function ($scope,$http,ngDialog){
         //console.log("LLEGO LA INFO BIEN!, PUEDE ESTAR VACIA PERO PHP NO TIRO ERROR");
         //console.log(DATA.data);
         $scope.DATA = DATA.data;
+
+        console.log($scope.DATA);
 
         for (var i=0;i < $scope.DATA.length;i++){
             //console.log($scope.DATA[i].B64.replace(/~/g, "\+"));
@@ -53,8 +59,11 @@ app.controller ('Formulario' , function ($scope,$http,ngDialog){
         //ERRROR!!!
         console.log(DATA.data);
      });
+}
+$scope.ARTS();
 
-    $scope.ADD = function(){
+// funcion agregar producto.
+$scope.NVOART = function(){
 
         ngDialog.openConfirm({
             template:'add.html',
@@ -63,11 +72,38 @@ app.controller ('Formulario' , function ($scope,$http,ngDialog){
         }).then(
             function (DATA) {
                 console.log("OK el ng dialog",DATA);
-                console.log(DATA);
+                //console.log(DATA);
+
+                //guardar en la BD si hay datos en DATA accion "4"
+                $scope.ADD = {ACC:"4"};
+                $scope.ADD.DES= DATA.DES;
+                $scope.ADD.DES2=DATA.DES2;
+                $scope.ADD.PRECIO=DATA.PRECIO;
+                $scope.ADD.B64=DATA.ARCH;
+                $scope.ADD.IDVEND=$scope.logID;
+                $scope.ADD.RANQ="3";/// todo manipular este dato
+                $scope.ADD.OBS="xx";// todo manipular este dato
+                if (true){
+                    dd='datos='+JSON.stringify($scope.ADD);
+                    console.log($scope.ADD);
+                    //console.log(dd);
+                    $http.post('acciones.php',dd,{"headers":{"Content-Type": "application/x-www-form-urlencoded"}})
+                        .then(
+                            function(DATA){
+                                //console.log("LLEGO LA INFO BIEN!, PUEDE ESTAR VACIA PERO PHP NO TIRO ERROR");
+                                console.log(DATA.data);//respuesta del PHP
+                                $scope.ARTS();
+
+                            },
+                            function(DATA){
+                                //ERRROR!!!
+                                console.log(DATA.data);
+                            });
+                }
             },
             function (DATA) {
                 //ERRROR!!!
-                console.log("abort o error el ngdialog");
+                console.log("abort o error en la carga del articulo en la BD");
             });
 
     };

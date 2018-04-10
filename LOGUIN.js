@@ -67,16 +67,17 @@ app.controller ('Formulario' , function ($scope,$http,ngDialog) {
         //verificar que el user existe
         // AJAX CON ANGULAR  DE ALEX .
         $scope.ACC.ACC="1";
-        console.log($scope.ACC);
+        //console.log($scope.ACC);
 
         dd='datos='+JSON.stringify($scope.ACC);
-        console.log(dd);
+        //console.log(dd);
         $http.post('acciones.php',dd,{"headers":{"Content-Type": "application/x-www-form-urlencoded"}})
             .then(
                 function(DATA){
                     //LLEGO LA INFO BIEN (PUEDE ESTAR VACIA PERO PHP NO TIRO ERROR)
                     localStorage.setItem("logID", DATA.data['0'].ID); //guarda el ID del user logueado en el navegador
 
+                    //console.log(DATA.data);
                     //console.log("Logueado ID #=",DATA.data);
                     console.log("Logueado ID #=",DATA.data['0'].ID);
                     window.open('PRODUCTOS.html', 'Productos', '');

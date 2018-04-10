@@ -18,30 +18,30 @@ switch ($accion) {
         $mailPOST=$DATOS['MAIL'];
         $passPOST=$DATOS['PASS'];
 
-        $sql = "SELECT ID FROM VOWE.pers WHERE MAIL = '".$mailPOST."'";       //linea que hace la consulta
+        $sql = "SELECT PASS FROM VOWE.pers WHERE MAIL = '".$mailPOST."'";       //linea que hace la consulta
         $query = $conexion->prepare($sql);  //verifica query contra la conexion.
         $query->execute();					//ejecuta el query
         $result = $query->fetchAll();      //carga toda la query en la variable $result
-        //echo $result;
-        //$result[0][$i];
-        $arrjson = json_encode($result);
-        //echo $arrjson;
-        if (strlen($arrjson)>2){
+
+        //echo "user OK";
+        if ($result[0]['PASS']){
             //resultado no vacio se encontro el usuario.
             //verificando coincidencia de pass
             $sql = "SELECT ID FROM VOWE.pers WHERE MAIL = '".$mailPOST."' AND PASS = '".$passPOST."'";       //linea que hace la consulta
             $query = $conexion->prepare($sql);  //verifica query contra la conexion.
             $query->execute();					//ejecuta el query
             $result = $query->fetchAll();      //carga toda la query en la variable $result
-            //echo $result;
-            //$result[0][$i];
             $arrjson1 = json_encode($result);
-            if (strlen($arrjson)>2){
+            if ($result[0]['ID']){
+                //echo "Pass OK";
                 echo $arrjson1;
             }
-        }
+        }else{echo "La clave es incorrecta";}
 
         break;
+
+
+
             //opc 2 guardar nuevo usuario
     case 2:
         $mailPOST=$DATOS['MAIL'];
@@ -92,15 +92,45 @@ switch ($accion) {
 
         //opc 3 buscar articulos x ID
     case 3:
-        $idPOST=$DATOS['ID'];
 
-        $sql = "SELECT * FROM VOWE.prod WHERE IDVEND = '".$idPOST."'";//linea que hace la consulta
+        $idPOST=$DATOS['IDVEND'];
+
+
+
+
+
+        $sql = "SELECT * FROM VOWE.prod WHERE IDVEND = '".$idPOST."';";//linea que hace la consulta
         $query = $conexion->prepare($sql);  //verifica query contra la conexion.
         $query->execute();					//ejecuta el query
         $result = $query->fetchAll();      //carga toda la query en la variable $result
 
         $arrjson = json_encode($result);
         echo $arrjson;
+
+        break;
+
+        //guardar articulo nuevo
+    case 4:
+        $desPOST=$DATOS['DES'];
+        $des2POST=$DATOS['DES2'];
+        $precioPOST=$DATOS['PRECIO'];
+        $B64POST=$DATOS['B64'];
+        $ranqPOST=$DATOS['RANQ'];
+        $obsPOST=$DATOS['OBS'];
+        $usuPOST=$DATOS['IDVEND'];
+
+        $sql = "INSERT INTO `prod`
+                        (DES, DES2, PRECIO, BAJA, B64, RANQ,OBS,IDVEND)
+                        VALUES
+                        ('$desPOST', '$des2POST','$precioPOST' ,'0','$B64POST','$ranqPOST','$obsPOST','$usuPOST')";
+        //$sql = "SELECT * FROM VOWE.prod WHERE IDVEND = '".$idPOST."'";//linea que hace la consulta
+        $query = $conexion->prepare($sql);  //verifica query contra la conexion.
+        $query->execute();					//ejecuta el query
+        $result = $query->fetchAll();      //carga toda la query en la variable $result
+
+        //$arrjson = json_encode($result);
+        //echo $arrjson;
+        echo "guardado con exito";
 
         break;
 }// fin switch
