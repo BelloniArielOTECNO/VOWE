@@ -52,7 +52,7 @@ $scope.ARTS = function () {
         for (var i=0;i < $scope.DATA.length;i++){
             //console.log($scope.DATA[i].B64.replace(/~/g, "\+"));
             $scope.DATA[i].B64=$scope.DATA[i].B64.replace(/~/g, "\+");
-            $scope.DATA[i].Hip=i; // insertar el hipervinculo para cada renglon
+            //$scope.DATA[i].Hip=i; // insertar el hipervinculo para cada renglon
         }
      },
      function(DATA){
@@ -62,8 +62,26 @@ $scope.ARTS = function () {
 }
 $scope.ARTS();
 
-$scope.DETALLE =function () {
-    alert("entre al detalle");
+$scope.DETALLE =function (x) {
+    console.log(x)
+    ngDialog.openConfirm({
+        template:
+        '<t3>Detalle del articulo</t3><br>' +
+        '<strong>Articulo: '+ x.DES +'</strong><br>'+
+        '<strong>Descripcion: '+ x.DES2 +'</strong><br>'+
+        '<strong>Precio: '+ x.PRECIO +'</strong><br>'+
+
+        '<img src='+ x.B64 + ' alt="image" width="200" height="200" border="1" >'+
+
+        '<div class="ngdialog-buttons">' +
+        '<button type="button" class="ngdialog-button ngdialog-button-secondary" ng-click="closeThisDialog(0)">Cancelar' +
+        '<button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="confirm(1)">Añadir a la Compra' +
+        '</button></div>',
+        plain: true,
+        closeByDocument: false,
+        closeByEscape: false
+    })
+
 };
 
 
@@ -83,7 +101,7 @@ $scope.NVOART = function(){
         }).then(
             function (DATA) {
                 console.log("OK el ng dialog",DATA);
-                //console.log(DATA);
+                console.log(DATA);
 
                 //guardar en la BD si hay datos en DATA accion "4"
                 $scope.ADD = {ACC:"4"};
