@@ -95,11 +95,13 @@ switch ($accion) {
 
         $idPOST=$DATOS['IDVEND'];
 
-
-
-
-
         $sql = "SELECT * FROM VOWE.prod WHERE IDVEND = '".$idPOST."';";//linea que hace la consulta
+
+        if ($idPOST==null){
+            $sql = "SELECT * FROM VOWE.prod;";
+        }
+
+
         $query = $conexion->prepare($sql);  //verifica query contra la conexion.
         $query->execute();					//ejecuta el query
         $result = $query->fetchAll();      //carga toda la query en la variable $result

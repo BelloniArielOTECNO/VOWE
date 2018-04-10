@@ -80,7 +80,31 @@ app.controller ('Formulario' , function ($scope,$http,ngDialog) {
                     //console.log(DATA.data);
                     //console.log("Logueado ID #=",DATA.data);
                     console.log("Logueado ID #=",DATA.data['0'].ID);
-                    window.open('PRODUCTOS.html', 'Productos', '');
+                    if ((DATA.data['0'].ID)!=undefined){ //si no es indefinido entra al ABM de productos
+                        window.open('PRODUCTOS.html', 'Productos', '');
+                    }else{
+                        //alert("Loguin fallido");
+                        ngDialog.openConfirm({
+                            template:
+                            '<h2>No se enceuntra la combinacion</h2>' +
+                            '<h3>Desea crear una nueva cuenta?</h3>' +
+                            '<div class="ngdialog-buttons">' +
+                            '<button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="confirm()">Nueva cuenta</button>' +
+                            '<button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="closeThisDialog(0)">Reintentar</button>' +
+
+                            '</div>',
+                            plain: true
+                        }).then(function (value) {
+                            window.open('NEWCTA.html','Nueva Cuenta','');
+
+                            window.close();
+                            },
+                            function(reject) {
+
+                                //window.close();
+                            }
+                        );
+                    }
 
                 },
                 function(DATA){

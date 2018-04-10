@@ -23,7 +23,7 @@ angular.module("app").directive("filesInput",
 
 
 app.controller ('Formulario' , function ($scope,$http,ngDialog){
-    var bl=0;
+    //var bl=0;
 
     $scope.logID = localStorage.getItem("logID"); //recupera ID del user logueado
     console.log($scope.logID);
@@ -62,6 +62,12 @@ $scope.ARTS = function () {
 }
 $scope.ARTS();
 
+//LOGOUT FUNCION
+$scope.LOGOUT = function () {
+    localStorage.removeItem("logID");
+    $scope.logID=undefined;
+}
+
 // funcion agregar producto.
 $scope.NVOART = function(){
 
@@ -85,13 +91,13 @@ $scope.NVOART = function(){
                 $scope.ADD.OBS="xx";// todo manipular este dato
                 if (true){
                     dd='datos='+JSON.stringify($scope.ADD);
-                    console.log($scope.ADD);
+                    //console.log($scope.ADD);
                     //console.log(dd);
                     $http.post('acciones.php',dd,{"headers":{"Content-Type": "application/x-www-form-urlencoded"}})
                         .then(
                             function(DATA){
                                 //console.log("LLEGO LA INFO BIEN!, PUEDE ESTAR VACIA PERO PHP NO TIRO ERROR");
-                                console.log(DATA.data);//respuesta del PHP
+                                console.log("Guardado con exito");
                                 $scope.ARTS();
 
                             },
@@ -109,7 +115,7 @@ $scope.NVOART = function(){
     };
 
 
-    //esta funcion guarda el formulario
+    //esta funcion guarda el formulario borrar no activa en VOWE
     $scope.GUA = function(){
         //if(!$("#FRM").valid()){ //si no esta validado sale de la funcion
         //    return;
