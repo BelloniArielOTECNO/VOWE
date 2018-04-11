@@ -61,7 +61,7 @@ $scope.ARTS = function () {
      });
 }
 $scope.ARTS();
-    $scope.orderByMe = function(x) {
+$scope.orderByMe = function(x) {
         $scope.myOrderBy = x;
     }
 $scope.DETALLE = function (x) {
@@ -96,10 +96,35 @@ $scope.DETALLE = function (x) {
 
 //añade el producto seleccionado al carrito array
 $scope.C_ADD = function (x) {
+    coincidencia=false;
     //alert("agregando al carrito");
-    CARR.push(x);
+    if (CARR.length>0){
+        cl=CARR.length;
+        for (i=0;i < cl;i++){
+            if (CARR[i].ID == x.ID){
+                //si hay coincidencia
+                CARR[i].CANT++;
+                $scope.CARR=CARR;
+                coincidencia=true;
+                break;
+            }
+        }
+
+        if (!coincidencia){
+            x.CANT=1;
+            CARR.push(x);
+            $scope.CARR=CARR;
+
+        }
+    }else{
+        x.CANT=1;
+        CARR.push(x);
+    }
+
+
     $scope.CARR=CARR;
     console.log($scope.CARR);
+    // si se repite el id sumar cant y borrar id
 
 };
 
@@ -107,9 +132,15 @@ $scope.C_ADD = function (x) {
 $scope.C_SUPR =  function (x) {
     $scope.CARR.splice(x, 1);
     console.log(x);
+    if($scope.CARR.length==0){
+        $scope.CARR=null;
+    }
 };
 
-
+$scope.ENV_MAIL = function () {
+    // envia el mail com los items del carro Matriz $scope.CARR
+    alert("enviando mail..");
+}
 
 $scope.LOGIN = function () {
     window.open('LOGIN.html','Loguin','');

@@ -55,7 +55,7 @@
 
                 <td>Imagen</td>
                 <td>Descripcion</td>
-                <td>Estado</td>
+                <td>Enviar al carro</td>
 
                 <tr ng-model="data" ng-repeat="x in DATA | orderBy:myOrderBy">
 
@@ -86,7 +86,7 @@
                 <table border="2">
                     <td>Imagen</td>
                     <td>Descripcion</td>
-                    <td>Estado</td>
+                    <td>Quitar item</td>
                     <tr ng-model="data1" ng-repeat="y in CARR track by $index">
                         <td>
                             <img src='{{y.B64}}' alt='image' width="80" height="80" border='1' >
@@ -98,9 +98,10 @@
                                  ng-click="C_SUPR($index)" alt='image' width="80" height="80" border='0' style="cursor:pointer">
                             <br/>
                         </td>
+                        <td><strong>{{y.CANT}}</strong></td>
                     </tr>
                 </table>
-
+                <button ng-show="CARR" ng-click="ENV_MAIL()">Enviar Pedido</button>
 
             </div>
 
