@@ -84,11 +84,18 @@ $scope.DETALLE =function (x) {
 
 };
 
+$scope.LOGIN = function () {
+    window.open('LOGIN.html','Loguin','');
+    window.close();
+
+}
 
 //LOGOUT FUNCION
 $scope.LOGOUT = function () {
     localStorage.removeItem("logID");
     $scope.logID=undefined;
+    $scope.ARTS();
+
 }
 
 // funcion agregar producto.

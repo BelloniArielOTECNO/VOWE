@@ -18,7 +18,7 @@ iapp.controller ('Index' , function ($scope){
     };
 
     $scope.LOGUINopen = function() {
-        window.open('LOGUIN.html', 'Loguin', '');
+        window.open('LOGIN.html', 'Loguin', '');
     };
 
 });// fin controlador
