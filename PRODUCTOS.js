@@ -23,7 +23,7 @@ angular.module("app").directive("filesInput",
 
 
 app.controller ('Formulario' , function ($scope,$http,ngDialog){
-    //var bl=0;
+    var CARR=[];
 
     $scope.logID = localStorage.getItem("logID"); //recupera ID del user logueado
     console.log($scope.logID);
@@ -62,8 +62,8 @@ $scope.ARTS = function () {
 }
 $scope.ARTS();
 
-$scope.DETALLE =function (x) {
-    console.log(x)
+$scope.DETALLE = function (x) {
+    console.log(x);
     ngDialog.openConfirm({
         template:
         '<t3>Detalle del articulo</t3><br>' +
@@ -84,11 +84,23 @@ $scope.DETALLE =function (x) {
 
 };
 
+$scope.C_ADD = function (x) {
+        //alert("agregando al carrito");
+        CARR.push(x);
+        $scope.CARR=CARR;
+        console.log($scope.CARR);
+
+};
+
+
+
+
+
 $scope.LOGIN = function () {
     window.open('LOGIN.html','Loguin','');
     window.close();
 
-}
+};
 
 //LOGOUT FUNCION
 $scope.LOGOUT = function () {
@@ -96,7 +108,7 @@ $scope.LOGOUT = function () {
     $scope.logID=undefined;
     $scope.ARTS();
 
-}
+};
 
 // funcion agregar producto.
 $scope.NVOART = function(){
