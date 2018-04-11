@@ -61,7 +61,9 @@ $scope.ARTS = function () {
      });
 }
 $scope.ARTS();
-
+    $scope.orderByMe = function(x) {
+        $scope.myOrderBy = x;
+    }
 $scope.DETALLE = function (x) {
     console.log(x);
     ngDialog.openConfirm({
@@ -75,24 +77,37 @@ $scope.DETALLE = function (x) {
 
         '<div class="ngdialog-buttons">' +
         '<button type="button" class="ngdialog-button ngdialog-button-secondary" ng-click="closeThisDialog(0)">Cancelar' +
-        '<button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="confirm(1)">Añadir a la Compra' +
+        '<button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="confirm(x)">Añadir a la Compra' +
         '</button></div>',
         plain: true,
         closeByDocument: false,
         closeByEscape: false
-    })
+    }).then(
+        function(x){
+            $scope.C_ADD(x);
+            console.log(x);
+
+        },
+        function(value){
+
+        });
 
 };
 
+//añade el producto seleccionado al carrito array
 $scope.C_ADD = function (x) {
-        //alert("agregando al carrito");
-        CARR.push(x);
-        $scope.CARR=CARR;
-        console.log($scope.CARR);
+    //alert("agregando al carrito");
+    CARR.push(x);
+    $scope.CARR=CARR;
+    console.log($scope.CARR);
 
 };
 
-
+// suprime del array carrito el producto clickeado
+$scope.C_SUPR =  function (x) {
+    $scope.CARR.splice(x, 1);
+    console.log(x);
+};
 
 
 
