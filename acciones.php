@@ -135,6 +135,45 @@ switch ($accion) {
         echo "guardado con exito";
 
         break;
+
+        //buscar articulos publicados
+    case 5:
+        $idPOST=$DATOS['IDVEND'];
+
+        $sql = "SELECT * FROM VOWE.prod WHERE IDVEND = '".$idPOST."' AND PUB = '1';";//linea que hace la consulta
+
+        if ($idPOST==null){
+            $sql = "SELECT * FROM VOWE.prod;";
+        }
+
+
+        $query = $conexion->prepare($sql);  //verifica query contra la conexion.
+        $query->execute();					//ejecuta el query
+        $result = $query->fetchAll();      //carga toda la query en la variable $result
+
+        $arrjson = json_encode($result);
+        echo $arrjson;
+        break;
+
+    case 6:
+        $idPOST=$DATOS['IDVEND'];
+        //$arrayPOST=$DATOS
+        //generar el string sql para hacer el cambio de estados de los arts del user
+
+        //$sql = "SELECT * FROM VOWE.prod WHERE IDVEND = '".$idPOST."' AND PUB = '1';";//linea que hace la consulta
+
+        if ($idPOST==null){
+            $sql = "SELECT * FROM VOWE.prod;";
+        }
+
+
+        $query = $conexion->prepare($sql);  //verifica query contra la conexion.
+        $query->execute();					//ejecuta el query
+        $result = $query->fetchAll();      //carga toda la query en la variable $result
+
+        $arrjson = json_encode($result);
+        echo $arrjson;
+        break;
 }// fin switch
 
 
