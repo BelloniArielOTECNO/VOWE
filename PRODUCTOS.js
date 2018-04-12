@@ -135,12 +135,34 @@ app.controller ('Formulario' , function ($scope,$http,ngDialog) {
             $scope.myOrderBy = x;
         };
 
+    $scope.Cinput = function (x) {
+        ngDialog.openConfirm({
+            template:
+            '<div class="ngdialog-buttons">' +
+                '<input>'+
+            '<button type="button" class="ngdialog-button ngdialog-button-secondary" ng-click="closeThisDialog(0)">Cancelar' +
+            '<button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="confirm()">OK' +
+            '</button></div>',
+            plain: true,
+
+            closeByDocument: false,
+            closeByEscape: false
+        }).then(
+            function(value){
+
+
+            },
+            function(value){
+
+            });
+    }
+
     $scope.DETALLE = function (x) {
         console.log(x);
         ngDialog.openConfirm({
             template:
             '<t3>Detalle del articulo</t3><br>' +
-            '<strong>Articulo: '+ x.DES +'</strong><br>'+
+            '<strong ng-click="Cinput(x.DES)">Articulo: '+ x.DES +'</strong><br>'+
             '<strong>Descripcion: '+ x.DES2 +'</strong><br>'+
             '<strong>Precio: '+ x.PRECIO +'</strong><br>'+
 
