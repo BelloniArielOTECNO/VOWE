@@ -26,7 +26,7 @@ app.controller ('Formulario' , function ($scope,$http,ngDialog){
     var CARR=[];
 
     $scope.logID = localStorage.getItem("logID"); //recupera ID del user logueado
-    console.log($scope.logID);
+    //console.log($scope.logID);
 
     //llenar Plublicados si hay loguin
     if ($scope.logID>0){
@@ -34,7 +34,7 @@ app.controller ('Formulario' , function ($scope,$http,ngDialog){
 
         $scope.ACC ={ACC:"5"}; //5 trae los articulos publicados por el vend logueado
         $scope.ACC.IDVEND = localStorage.getItem("logID");
-        console.log($scope.ACC);
+        //console.log($scope.ACC);
         dd='datos='+JSON.stringify($scope.ACC);
         //console.log($scope.ACC);
         //console.log(dd);
@@ -46,7 +46,7 @@ app.controller ('Formulario' , function ($scope,$http,ngDialog){
                     CARR=DATA.data;
                     $scope.CARR = CARR;
 
-                    console.log($scope.CARR);
+                    //console.log($scope.CARR);
 
                     for (var i=0;i < $scope.CARR.length;i++){
                         //console.log($scope.DATA[i].B64.replace(/~/g, "\+"));
@@ -74,11 +74,12 @@ app.controller ('Formulario' , function ($scope,$http,ngDialog){
                 .then(
                     function(DATA){
                         //console.log("LLEGO LA INFO BIEN!, PUEDE ESTAR VACIA PERO PHP NO TIRO ERROR");
-                        //console.log(DATA.data);
-                        CARR=DATA.data;
-                        $scope.CARR = CARR;
+                        console.log("-----------");
+                        console.log(DATA.data);
+                        //CARR=DATA.data;
+                        //$scope.CARR = CARR;
 
-                        console.log($scope.CARR);
+                        //console.log($scope.CARR);
 
                         for (var i=0;i < $scope.CARR.length;i++){
                             //console.log($scope.DATA[i].B64.replace(/~/g, "\+"));
@@ -101,7 +102,7 @@ app.controller ('Formulario' , function ($scope,$http,ngDialog){
 
         $scope.ACC ={ACC:"3"};
         $scope.ACC.IDVEND = localStorage.getItem("logID");
-        console.log($scope.ACC);
+        //console.log($scope.ACC);
         dd='datos='+JSON.stringify($scope.ACC);
         //console.log($scope.ACC);
         //console.log(dd);
@@ -112,7 +113,7 @@ app.controller ('Formulario' , function ($scope,$http,ngDialog){
                     //console.log(DATA.data);
                     $scope.DATA = DATA.data;
 
-                    console.log($scope.DATA);
+                    //console.log($scope.DATA);
 
                     for (var i=0;i < $scope.DATA.length;i++){
                         //console.log($scope.DATA[i].B64.replace(/~/g, "\+"));
@@ -193,14 +194,14 @@ app.controller ('Formulario' , function ($scope,$http,ngDialog){
 
 
         $scope.CARR=CARR;
-        console.log($scope.CARR);
+        //console.log($scope.CARR);
         // si se repite el id sumar cant y borrar id
 
     };
 
     // suprime del array carrito el producto clickeado
     $scope.C_SUPR =  function (x) {
-        $scope.C_CAMBIO=x;
+        $scope.C_CAMBIO=1;
 
         $scope.CARR.splice(x, 1);
         if($scope.CARR.length==0){

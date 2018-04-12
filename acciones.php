@@ -155,24 +155,38 @@ switch ($accion) {
         echo $arrjson;
         break;
 
+        //guardar articulos publicados
     case 6:
         $idPOST=$DATOS['IDVEND'];
-        //$arrayPOST=$DATOS
-        //generar el string sql para hacer el cambio de estados de los arts del user
+        $CARR_POST = $DATOS['CARR'];
 
-        //$sql = "SELECT * FROM VOWE.prod WHERE IDVEND = '".$idPOST."' AND PUB = '1';";//linea que hace la consulta
-
-        if ($idPOST==null){
-            $sql = "SELECT * FROM VOWE.prod;";
-        }
-
+        $sql = "UPDATE VOWE.prod SET PUB = '0' WHERE IDVEND = '".$idPOST."' ;";//linea que saca todo de publicacion
 
         $query = $conexion->prepare($sql);  //verifica query contra la conexion.
         $query->execute();					//ejecuta el query
-        $result = $query->fetchAll();      //carga toda la query en la variable $result
+        //$result = $query->fetchAll();      //carga toda la query en la variable $result
 
-        $arrjson = json_encode($result);
-        echo $arrjson;
+
+        $sql = "UPDATE VOWE.prod SET PUB = '1' WHERE ";//construccion de linea que publica los articulos seleccionados.
+        $inicio=true;
+        for ($i=0;$i < count($CARR_POST);$i++){
+            if ($inicio){
+                $sql = $sql." ID=".$CARR_POST[$i]['ID'] ;//cinstruccion articulos seleccionados.
+                $inicio=false;
+            }else{
+                $sql = $sql." OR ID=".$CARR_POST[$i]['ID'] ;//cinstruccion articulos seleccionados.
+            }
+
+        }
+        $sql = $sql.";";
+
+        $query = $conexion->prepare($sql);  //verifica query contra la conexion.
+        $query->execute();					//ejecuta el query
+        //$result = $query->fetchAll();      //carga toda la query en la variable $result
+
+
+        //$arrjson = json_encode($result);
+        echo $sql;
         break;
 }// fin switch
 
