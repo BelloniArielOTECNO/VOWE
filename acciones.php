@@ -90,7 +90,7 @@ switch ($accion) {
 
         break;
 
-        //opc 3 buscar articulos x ID
+        //opc 3 buscar articulos x IDUSER si no hay user trae todo lo publicado
     case 3:
 
         $idPOST=$DATOS['IDVEND'];
@@ -98,7 +98,7 @@ switch ($accion) {
         $sql = "SELECT * FROM VOWE.prod WHERE IDVEND = '".$idPOST."';";//linea que hace la consulta
 
         if ($idPOST==null){
-            $sql = "SELECT * FROM VOWE.prod;";
+            $sql = "SELECT * FROM VOWE.prod WHERE PUB='1';";
         }
 
 
@@ -136,7 +136,7 @@ switch ($accion) {
 
         break;
 
-        //buscar articulos publicados
+        //buscar articulos publicados x id user
     case 5:
         $idPOST=$DATOS['IDVEND'];
 
