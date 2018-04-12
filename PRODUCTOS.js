@@ -230,8 +230,16 @@ app.controller ('Formulario' , function ($scope,$http,ngDialog) {
     };
 
     $scope.LOGIN = function () {
-        window.open('LOGIN.html','Loguin','');
-        window.close();
+        ngDialog.openConfirm({
+            template: 'modalDialogId',
+            className: 'ngdialog-theme-default'
+        }).then(function (value) {
+            console.log('Modal promise resolved. Value: ', value);
+        }, function (reason) {
+            console.log('Modal promise rejected. Reason: ', reason);
+        });
+        //window.open('LOGIN.html','Loguin','');
+        //window.close();
 
     };
 
@@ -290,6 +298,60 @@ app.controller ('Formulario' , function ($scope,$http,ngDialog) {
 
         };
 
+    $scope.GUA = function() {
+        //verificar que el user existe
+        // AJAX CON ANGULAR  DE ALEX .
+        $scope.ACC.ACC="1";
+        //console.log($scope.ACC);
+
+        dd='datos='+JSON.stringify($scope.ACC);
+        //console.log(dd);
+        $http.post('acciones.php',dd,{"headers":{"Content-Type": "application/x-www-form-urlencoded"}})
+            .then(
+                function(DATA){
+                    //LLEGO LA INFO BIEN (PUEDE ESTAR VACIA PERO PHP NO TIRO ERROR)
+                    localStorage.setItem("logID", DATA.data['0'].ID); //guarda el ID del user logueado en el navegador
+
+                    //console.log(DATA.data);
+                    //console.log("Logueado ID #=",DATA.data);
+                    console.log("Logueado ID #=",DATA.data['0'].ID);
+                    if ((DATA.data['0'].ID)!=undefined){ //si no es indefinido entra al ABM de productos
+                        window.open('PRODUCTOS.html', 'Productos', '');
+                    }else{
+                        //alert("Loguin fallido");
+                        ngDialog.openConfirm({
+                            template:
+                            '<h2>No se enceuntra la combinacion</h2>' +
+                            '<h3>Desea crear una nueva cuenta?</h3>' +
+                            '<div class="ngdialog-buttons">' +
+                            '<button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="confirm()">Nueva cuenta</button>' +
+                            '<button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="closeThisDialog(0)">Reintentar</button>' +
+
+                            '</div>',
+                            plain: true
+                        }).then(function (value) {
+                                window.open('NEWCTA.html','Nueva Cuenta','');
+
+                                window.close();
+                            },
+                            function(reject) {
+
+                                //window.close();
+                            }
+                        );
+                    }
+
+                },
+                function(DATA){
+                    //ERRROR!!!
+                    console.log(DATA.data);
+                    window.close();
+
+                });
+        //verificar qe coincide su pass
+        //habilitar loguin con nro ID base
+
+    }
 
 });// fin controlador
 

@@ -62,7 +62,7 @@
                             <img ng-src="{{x.B64}}" ng-click="DETALLE(x)" alt='image' width="80" height="80" border='0' style="cursor:pointer">
                             <br/>
                         </td>
-                        <td>{{x.DES}}<br/>{{x.DES2}}<br/><strong>{{x.PRECIO}}</strong></td>
+                        <td>{{x.DES}}<br/>{{x.DES2}}<br/><strong>{{x.PRECIO}}</strong><br/>Vendedor: {{x.IDVEND}}</td>
                         <td>
                             <img src='data:image/png;base64,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'
                                  ng-click="C_ADD(x)" alt='image' width="80" height="80" border='0' style="cursor:pointer">
@@ -118,7 +118,42 @@
 
     </div>
 
+        <script type="text/ng-template" id="modalDialogId">
+            <div class="jumbotron" ng-controller="Formulario">
 
+
+                <div class="ng-cloak">
+                    <h2>BIENVENIDO! <br>loguin</h2>
+                    <div class="container-fluid">
+                        <h3>Logueate para hacer pedidos o vender y manejar tu cuenta!</h3>
+                        <ol>
+                            <div id="PPAL" ng-class="FRM.EMP.$valid && FRM.FFP.$valid && FRM.IMP.$valid && FRM.MP.$valid && FRM.CTA.$valid ? 'frm-ok' : 'frm-w'">
+                                <form id="FRM" name="FRM">
+                                    Mail
+                                    <input ng-model="ACC.MAIL" required>
+                                    {{MAIL}}
+                                    <br>
+                                    <br>
+                                    Contraseña
+                                    <input ng-model="ACC.PASS" required>
+                                    {{PASS}}
+                                    <br>
+                                    <div class="ngdialog-buttons">
+                                        <button ng-click="GUA()" type="button" class="ngdialog-button ngdialog-button-primary">Loguin</button>
+                                    </div>
+                                </form>
+
+                            </div>
+
+                        </ol>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+        </script>
 
     <!--script src="js/jquery-3.2.1.min.js"></script
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
