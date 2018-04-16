@@ -136,6 +136,7 @@ app.controller ('Formulario' , function ($scope,$http,ngDialog) {
         };
 
     $scope.Cinput = function (x) {
+        alert("Cinput");
         ngDialog.openConfirm({
             template:
             '<div class="ngdialog-buttons">' +
@@ -160,9 +161,9 @@ app.controller ('Formulario' , function ($scope,$http,ngDialog) {
     $scope.DETALLE = function (x) {
         console.log(x);
         ngDialog.openConfirm({
-            template:
-            '<t3>Detalle del articulo</t3><br>' +
-            '<strong ng-click="Cinput(x.DES)">Articulo: '+ x.DES +'</strong><br>'+
+            //template:'MDviewDetalle',
+            template:'<t3>Detalle del articulo</t3><br>' +
+            '<strong ng-click="Cinput()">Articulo: '+  x.DES +'</strong><br>'+
             '<strong>Descripcion: '+ x.DES2 +'</strong><br>'+
             '<strong>Precio: '+ x.PRECIO +'</strong><br>'+
 
@@ -173,7 +174,7 @@ app.controller ('Formulario' , function ($scope,$http,ngDialog) {
             '<button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="confirm()">Añadir a la Compra' +
             '</button></div>',
             plain: true,
-
+            //scope:$scope,
             closeByDocument: false,
             closeByEscape: false
         }).then(
@@ -253,7 +254,7 @@ app.controller ('Formulario' , function ($scope,$http,ngDialog) {
 
     $scope.LOGIN = function () {
         ngDialog.openConfirm({
-            template: 'modalDialogId',
+            template: 'MDlogin',
             className: 'ngdialog-theme-default'
         }).then(function (value) {
             console.log('Modal promise resolved. Value: ', value);
